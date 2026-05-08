@@ -67,4 +67,13 @@ public class Filme {
             this.categoria = categoria;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + "\n" +
+               "Filme: " + nome + "\n" +
+               "Ano de Lançamento: " + ano + "\n" +
+               "Sinopse: " + sinopse + "\n" +
+               "Categoria: " + categoria;
+    }
 }
