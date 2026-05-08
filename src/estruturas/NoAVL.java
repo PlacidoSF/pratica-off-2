@@ -2,10 +2,10 @@ package estruturas;
 import modelo.Filme;
 
 public class NoAVL {
-    int chave;
-    NoAVL esquerda, direita;
-    int altura;
-    Filme valorFilme;
+    private int chave;
+    private NoAVL esquerda, direita;
+    private int altura;
+    private Filme valorFilme;
 
     public NoAVL(int chave, Filme filme) {
         setChave(chave);
@@ -44,5 +44,13 @@ public class NoAVL {
 
     public void setValorFilme(Filme valorFilme) {
         this.valorFilme = valorFilme;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
     }
 }

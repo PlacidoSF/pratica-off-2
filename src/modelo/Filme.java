@@ -5,17 +5,17 @@ public class Filme {
     private String nome;
     private int ano;
     private String sinopse;
-    private String genero;
+    private String categoria;
 
     public Filme() {    
     }
 
-    public Filme(int id, String nome, int ano, String sinopse, String genero) {
+    public Filme(int id, String nome, int ano, String sinopse, String categoria) {
         setId(id);
         setNome(nome);
         setAno(ano);
         setSinopse(sinopse);
-        setGenero(genero);
+        setCategoria(categoria);
     }
 
     public int getId() {
@@ -34,8 +34,8 @@ public class Filme {
         return sinopse;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getCategoria() {
+        return categoria;
     }
 
     public void setId(int id) {
@@ -62,9 +62,9 @@ public class Filme {
         }
     }
 
-    public void setGenero(String genero) {
-        if (genero != null) {
-            this.genero = genero;
+    public void setCategoria(String categoria) {
+        if (categoria != null) {
+            this.categoria = categoria;
         }
     }
 }
