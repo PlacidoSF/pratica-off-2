@@ -1,16 +1,16 @@
-package model;
+package modelo;
 
 public class Filme {
-    private Integer id;
+    private int id;
     private String nome;
-    private Integer ano;
+    private int ano;
     private String sinopse;
     private String genero;
 
     public Filme() {    
     }
 
-    public Filme(Integer id, String nome, Integer ano, String sinopse, String genero) {
+    public Filme(int id, String nome, int ano, String sinopse, String genero) {
         setId(id);
         setNome(nome);
         setAno(ano);
@@ -18,7 +18,7 @@ public class Filme {
         setGenero(genero);
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -26,7 +26,7 @@ public class Filme {
         return nome;
     }
 
-    public Integer getAno() {
+    public int getAno() {
         return ano;
     }
 
@@ -38,8 +38,8 @@ public class Filme {
         return genero;
     }
 
-    public void setId(Integer id) {
-        if (id != null && id > 0) {
+    public void setId(int id) {
+        if (id > 0) {
             this.id = id;
         }
     }
@@ -50,8 +50,8 @@ public class Filme {
         }
     }
 
-    public void setAno(Integer ano) {
-        if (ano != null && ano > 0) {
+    public void setAno(int ano) {
+        if (ano > 0) {
             this.ano = ano;
         }
     }
