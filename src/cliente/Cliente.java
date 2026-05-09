@@ -28,7 +28,29 @@ public class Cliente {
 
         else {
             System.out.println("Miss: Filme não encontrado no cache. Solicitando ao servidor...");
-            // futuramente aqui eu chamo o servidor
+
+            //busca na tabela Hash
+            Filme filmeIndex = servidor.buscarComIndice(id);
+
+            //busca na banco de dados
+            Filme filmeFisica = servidor.buscarSemIndice(id);
+
+            if (filmeIndex != null && filmeFisica != null) {
+                System.out.println("Filme encontrado no servidor: ");
+                System.out.println(filmeIndex);
+
+                System.out.println("Filme encontrado no servidor sem índice: " + filmeFisica);
+
+                System.out.println("Comparações para busca no servidor com índice: " + servidor.getComparacoesIndex());
+                System.out.println("Comparações para busca no servidor sem índice: " + servidor.getComparacoesFisica());
+            
+                atualizarCache(filmeIndex);
+            } else {
+                System.out.println("Filme não encontrado no servidor.");
+
+                System.out.println("Comparações para busca no servidor com índice: " + servidor.getComparacoesIndex());
+                System.out.println("Comparações para busca no servidor sem índice: " + servidor.getComparacoesFisica());
+            }
         }
     }
 
