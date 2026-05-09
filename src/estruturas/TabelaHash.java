@@ -1,7 +1,5 @@
 package estruturas;
 
-import modelo.Filme;
-
 public class TabelaHash {
     private static final int tamanhoT = 1021;
     private NoHash[] tabela = new NoHash[tamanhoT];
@@ -22,14 +20,14 @@ public class TabelaHash {
     }
 
     //final da lista
-    public void inserir(int chave, Filme valorFile) {
+    public void inserir(int chave, NoLista referenciaLista) {
         int posicao = hash(chave);
 
         NoHash noAtual = tabela[posicao];
         NoHash noAnterior = null;
 
         if (noAtual == null) {
-            tabela[posicao] = new NoHash(chave, valorFile);
+            tabela[posicao] = new NoHash(chave, referenciaLista);
         } 
 
         else {
@@ -42,12 +40,12 @@ public class TabelaHash {
             }
 
             if (noAtual == null) {
-                noAnterior.setProxNo(new NoHash(chave, valorFile));
+                noAnterior.setProxNo(new NoHash(chave, referenciaLista));
             } 
         }
     }
 
-    public NoHash buscar(int chave) {
+    public NoLista buscar(int chave) {
         this.comparacoesBusca = 0;
         int posicao = hash(chave);
         NoHash noAtual = tabela[posicao];
@@ -55,7 +53,7 @@ public class TabelaHash {
         while (noAtual != null) {
             this.comparacoesBusca++;
             if (noAtual.getChave() == chave) {
-                return noAtual;
+                return noAtual.getReferenciaLista();
             }
             noAtual = noAtual.getProxNo();
         }

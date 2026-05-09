@@ -1,13 +1,13 @@
 package estruturas;
-import modelo.Filme;
+
 public class NoHash {
     private int chave;
-    private Filme valorFilme;
+    private NoLista referenciaLista;
     private NoHash proxNo;
 
-    public NoHash(int chave, Filme valorFilme) {
+    public NoHash(int chave, NoLista referenciaLista) {
         this.chave = chave;
-        this.valorFilme = valorFilme;
+        this.referenciaLista = referenciaLista;
         this.proxNo = null;
     }
 
@@ -19,12 +19,12 @@ public class NoHash {
         this.chave = chave;
     }
 
-    public Filme getValorFilme() {
-        return valorFilme;
+    public NoLista getReferenciaLista() {
+        return referenciaLista;
     }
 
-    public void setValorFilme(Filme valorFilme) {
-        this.valorFilme = valorFilme;
+    public void setReferenciaLista(NoLista referenciaLista) {
+        this.referenciaLista = referenciaLista;
     }
 
     public NoHash getProxNo() {
