@@ -14,7 +14,7 @@ public class App {
         
         
         LeitorCSV leitor = new LeitorCSV();
-        List<Filme> catalogo = leitor.lerFilmes("filmes.csv");
+        List<Filme> catalogo = leitor.lerFilmes("resources/filmes.csv");
         Servidor servidor = new Servidor();
         Cliente cliente = new Cliente(servidor);
        
@@ -53,7 +53,7 @@ public class App {
                     break;
 
                 case "0":
-                    System.out.println("\nEncerrando o sistema... Até logo!");
+                    System.out.println("\nEncerrando o sistema... Fim.");
                     continuar = false;
                     break;
 
