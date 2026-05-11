@@ -20,14 +20,24 @@ public class Cliente {
     }
     
     public void solicitarFilme(int id) {
+
+        System.out.println("===================================================");
+        System.out.println("[BUSCA SOLICITADA] ID: " + id);
+        System.out.println("---------------------------------------------------");
+
         NoAVL no = cache.buscar(id);
+
         if (no != null) {
-            System.out.println("Hit: Filme encontrado no cache. Quantidade de comparações: " + cache.getComparacoesBusca());
+            System.out.println("[HIT] Filme encontrado no Cache (AVL).");
+            System.out.println("> Comparações na Árvore: "+ cache.getComparacoesBusca());
+            System.out.println("---------------------------------------------------");
             System.out.println(no.getValorFilme());
         }
 
         else {
-            System.out.println("Miss: Filme não encontrado no cache. Solicitando ao servidor...");
+
+            System.out.println("[MISS] Filme não encontrado no Cache.");
+            System.out.println("[SERVIDOR] Buscando dados no backend...");
 
             //busca na tabela Hash
             Filme filmeIndex = servidor.buscarComIndice(id);
@@ -36,22 +46,23 @@ public class Cliente {
             Filme filmeFisica = servidor.buscarSemIndice(id);
 
             if (filmeIndex != null && filmeFisica != null) {
-                System.out.println("Filme encontrado no servidor: ");
+
+                System.out.println("> ÍNDICE (Hash): " + servidor.getComparacoesIndex() + " comparações");
+                System.out.println("> DISCO (Lista): " + servidor.getComparacoesFisica() + " comparações");
+                System.out.println("---------------------------------------------------");
+                System.out.println("[FILME ENCONTRADO NO SERVIDOR]");
                 System.out.println(filmeIndex);
 
-                System.out.println("Filme encontrado no servidor sem índice: " + filmeFisica);
-
-                System.out.println("Comparações para busca no servidor com índice: " + servidor.getComparacoesIndex());
-                System.out.println("Comparações para busca no servidor sem índice: " + servidor.getComparacoesFisica());
-            
-                atualizarCache(filmeIndex);
             } else {
-                System.out.println("Filme não encontrado no servidor.");
 
-                System.out.println("Comparações para busca no servidor com índice: " + servidor.getComparacoesIndex());
-                System.out.println("Comparações para busca no servidor sem índice: " + servidor.getComparacoesFisica());
+                System.out.println("> ÍNDICE (Hash): " + servidor.getComparacoesIndex() + " comparações");
+                System.out.println("> DISCO (Lista): " + servidor.getComparacoesFisica() + " comparações");
+                System.out.println("---------------------------------------------------");
+                System.out.println("[ERRO] Filme não existe no banco de dados.");     
+
             }
         }
+        System.out.println("===================================================\n");
     }
 
     public void atualizarCache(Filme filme) {

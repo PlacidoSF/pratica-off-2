@@ -16,11 +16,17 @@ public class LeitorCSV {
 
             String linha = br.readLine();
             linha = br.readLine();
-            
+
             while (linha != null) {
-                String[] itens = linha.split(",");
+                String[] itens = linha.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 
-                filmes.add(new Filme(Integer.parseInt(itens[0]), itens[1], Integer.parseInt(itens[2]), itens[3], itens[4]));
+                int id = Integer.parseInt(itens[0].replace("\"", "").trim());
+                String nome = itens[1].replace("\"", "").trim();
+                int ano = Integer.parseInt(itens[2].replace("\"", "").trim());
+                String sinopse = itens[3].replace("\"", "").trim();
+                String genero = itens[4].replace("\"", "").trim();
+
+                filmes.add(new Filme(id, nome, ano, sinopse, genero));
                 linha = br.readLine();
             }
 
