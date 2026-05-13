@@ -53,6 +53,8 @@ public class Cliente {
                 System.out.println("[FILME ENCONTRADO NO SERVIDOR]");
                 System.out.println(filmeIndex);
 
+                atualizarCache(filmeIndex);
+
             } else {
 
                 System.out.println("> ÍNDICE (Hash): " + servidor.getComparacoesIndex() + " comparações");
@@ -67,7 +69,15 @@ public class Cliente {
 
     public void atualizarCache(Filme filme) {
         if (fila.size() == limite) {
-            cache.remover(fila.poll());
+            int idFilmeRemovido = fila.poll();
+
+            Filme filmeRemovido = cache.buscar(idFilmeRemovido).getValorFilme();
+
+            System.out.println("---------------------------------------------------");
+            System.out.println("[AVISO DE CACHE] Limite máximo (" + limite + ") atingido. Aplicando regra FIFO...");
+            System.out.println("Removendo: " + filmeRemovido.getNome() + " (ID: " + idFilmeRemovido + ")");
+            System.out.println("---------------------------------------------------");
+            cache.remover(idFilmeRemovido);
         }
 
         fila.offer(filme.getId());

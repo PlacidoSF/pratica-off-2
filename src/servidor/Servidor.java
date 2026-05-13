@@ -1,5 +1,8 @@
 package servidor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import estruturas.ListaLigada;
 import estruturas.TabelaHash;
 import estruturas.NoLista;
@@ -41,5 +44,22 @@ public class Servidor {
 
     public int getComparacoesFisica() {
         return this.dados.getComparacoesBusca();
+    }
+
+    public List<Filme> obterPagina(int numeroPagina, int tamanhoPagina) {
+        List<Filme> pagina = new ArrayList<>();
+        int indiceInicio = (numeroPagina - 1) * tamanhoPagina;
+        int contador = 0;
+        
+        NoLista atual = this.dados.getList();
+        
+        while (atual != null && pagina.size() < tamanhoPagina) {
+            if (contador >= indiceInicio) {
+                pagina.add(atual.getValorFilme());
+            }
+            atual = atual.getProxNo();
+            contador++;
+        }
+        return pagina;
     }
 }

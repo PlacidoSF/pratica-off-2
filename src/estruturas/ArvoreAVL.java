@@ -38,7 +38,6 @@ public class ArvoreAVL {
             return this.buscar(arv.getEsquerda(), chave);
         } 
         
-        this.comparacoesBusca++;
         if (arv.getChave() < chave) {
             return this.buscar(arv.getDireita(), chave);
         } else {

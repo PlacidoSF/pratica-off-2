@@ -38,4 +38,8 @@ public class ListaLigada {
         }
         return null;
     }
+
+    public NoLista getList() {
+        return this.lista;
+    }
 }
