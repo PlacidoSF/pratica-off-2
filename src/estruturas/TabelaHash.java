@@ -1,7 +1,7 @@
 package estruturas;
 
 public class TabelaHash {
-    private static final int tamanhoT = 1021;
+    private static final int tamanhoT = 509;
     private NoHash[] tabela = new NoHash[tamanhoT];
     private int comparacoesBusca;
 

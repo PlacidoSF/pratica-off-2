@@ -110,6 +110,7 @@ public class App {
         try {
             new ProcessBuilder("clear").inheritIO().start().waitFor();
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
@@ -120,7 +121,7 @@ public class App {
 
     private static void menuPaginacao(Servidor servidor, Scanner teclado) {
         int paginaAtual = 1;
-        int totalPaginas = 100;
+        int totalPaginas = 50;
         boolean navegando = true;
 
         while (navegando) {
@@ -134,7 +135,7 @@ public class App {
             System.out.println("---------------------------------------------------------------");
 
             
-            List<Filme> paginaDeFilmes = servidor.obterPagina(paginaAtual, 10);
+            List<Filme> paginaDeFilmes = servidor.obterPagina(paginaAtual, 20);
 
             for (Filme f : paginaDeFilmes) {
                 String nome = f.getNome();
