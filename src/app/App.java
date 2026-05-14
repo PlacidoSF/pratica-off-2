@@ -53,31 +53,32 @@ public class App {
             String entrada = input.nextLine();
             String comandoUpper = entrada.toUpperCase();
 
-            if (comandoUpper.equals("P")) {
-                if (paginaAtual < totalPaginas) paginaAtual++;
-            } 
-            else if (comandoUpper.equals("V")) {
-                if (paginaAtual > 1) paginaAtual--;
-            } 
-            else if (comandoUpper.equals("T")) {
-                limparTela();
-                testePadrao(cliente);
-                pausar(input);
-            } 
-            else if (comandoUpper.equals("S")) {
-                System.out.println("\nEncerrando o sistema... Fim.");
-                continuar = false;
-            } 
-            else {
-                try {
-                    int idBuscado = Integer.parseInt(entrada);
+            switch (comandoUpper) {
+                case "P":
+                    if (paginaAtual < totalPaginas) paginaAtual++;
+                    break;
+                case "V":
+                    if (paginaAtual > 1) paginaAtual--;
+                    break;
+                case "T":
                     limparTela();
-                    cliente.solicitarFilme(idBuscado);
+                    testePadrao(cliente);
                     pausar(input);
-                } catch (NumberFormatException e) {
-                    System.out.println("\n[AVISO] Entrada inválida. Por favor, digite um comando válido ou um ID numérico.");
-                    pausar(input);
-                }
+                    break;
+                case "S":
+                    System.out.println("\nEncerrando o sistema... Fim.");
+                    continuar = false;
+                    break;
+                default:
+                    try {
+                        int idBuscado = Integer.parseInt(entrada);
+                        limparTela();
+                        cliente.solicitarFilme(idBuscado);
+                        pausar(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("\n[AVISO] Entrada inválida. Por favor, digite um comando válido ou um ID numérico.");
+                        pausar(input);
+                    }
             }
         }
 
