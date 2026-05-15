@@ -3,7 +3,8 @@ package cliente;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import estruturas.*;
+import cliente.cache.ArvoreAVL;
+import cliente.cache.NoAVL;
 import modelo.Filme;
 import servidor.Servidor;
 

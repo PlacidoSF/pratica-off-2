@@ -1,4 +1,6 @@
-package estruturas;
+package servidor.hash;
+
+import servidor.listaLigada.NoLista;
 
 public class NoHash {
     private int chave;

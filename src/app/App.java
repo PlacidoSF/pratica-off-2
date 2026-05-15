@@ -114,7 +114,7 @@ public class App {
 
         System.out.println("--- TESTE 1: BUSCAS COM SUCESSO NO CACHE (HITS) ---");
         System.out.println("Testando IDs que já estão carregados na memória cache...");
-        int[] testeHit = {1, 10, 20, 30, 40, 50};
+        int[] testeHit = {5, 10, 20, 30, 40, 50};
         for (int id : testeHit) {
             cliente.solicitarFilme(id);
         }

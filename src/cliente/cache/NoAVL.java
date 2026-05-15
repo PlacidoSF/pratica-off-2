@@ -1,4 +1,4 @@
-package estruturas;
+package cliente.cache;
 import modelo.Filme;
 
 public class NoAVL {

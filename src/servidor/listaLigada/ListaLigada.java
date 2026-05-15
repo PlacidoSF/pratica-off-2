@@ -1,4 +1,4 @@
-package estruturas;
+package servidor.listaLigada;
 
 import modelo.Filme;
 

@@ -3,9 +3,9 @@ package servidor;
 import java.util.ArrayList;
 import java.util.List;
 
-import estruturas.ListaLigada;
-import estruturas.TabelaHash;
-import estruturas.NoLista;
+import servidor.hash.TabelaHash;
+import servidor.listaLigada.ListaLigada;
+import servidor.listaLigada.NoLista;
 import modelo.Filme;
 
 public class Servidor {
