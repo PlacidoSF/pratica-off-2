@@ -136,7 +136,7 @@ public class App {
         System.out.println("\n>>> ROTEIRO FINALIZADO COM SUCESSO <<<");
     }
 
-private static void limparTela() {
+    private static void limparTela() {
         try {
             String sistemaOperacional = System.getProperty("os.name").toLowerCase();
             
