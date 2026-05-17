@@ -136,11 +136,17 @@ public class App {
         System.out.println("\n>>> ROTEIRO FINALIZADO COM SUCESSO <<<");
     }
 
-    private static void limparTela() {
+private static void limparTela() {
         try {
-            new ProcessBuilder("clear").inheritIO().start().waitFor();
+            String sistemaOperacional = System.getProperty("os.name").toLowerCase();
+            
+            if (sistemaOperacional.contains("windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Erro ao limpar a tela: " + e.getMessage());
         }
     }
 
